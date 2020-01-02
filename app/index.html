@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="index.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Schedule Appointments</title>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>
+                Scheduling
+            </h1>
+        </div>
+    </header>
+    <section id="main-content">
+        <div id="scheduling">
+            <div id="dates">
+                <select name="month" id="month" onChange="monthChange(event)">
+                    <option value="none">-- Month --</option>
+                    <option value="JANUARY">January</option>
+                    <option value="FEBRUARY">February</option>
+                    <option value="MARCH">March</option>
+                    <option value="APRIL">April</option>
+                    <option value="MAY">May</option>
+                    <option value="JUNE">June</option>
+                    <option value="JULY">July</option>
+                    <option value="AUGUST">August</option>
+                    <option value="SEPTEMBER">September</option>
+                    <option value="OCTOBER">October</option>
+                    <option value="NOVEMBER">November</option>
+                    <option value="DECEMBER">December</option>
+                </select>
+                <select name="day" id="day">
+                    <option value="none">-- Day --</option>
+                </select>
+                <input id="year" type="number" value="2020" min="2020">
+                <div onClick="chooseDate" id="pick-date">
+                    <h3>Submit</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer></footer>
+</body>
+</html>
