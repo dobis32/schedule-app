@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="index.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="/css/scheduler.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Schedule Appointments</title>
 </head>
@@ -18,7 +17,26 @@
         </div>
     </header>
     <section id="main-content">
+        <div id="myModal" class="modal">
+            
+            <div class="modal-content">
+                <div id="modal-header">
+                    <span class="close">&times;</span>
+                    <h1>Confirm Appointment</h1>
+                </div>
+                <div id="modal-body">
+                    <h2 id="appointment-date"></h2>
+                    <input type="hidden" id="time-buffer" value="">
+                    <h3>Anything special you'd like us to know about ahead of time?</h3>
+                    <textarea name="notes" id="appointment-notes" cols="54" rows="10"></textarea>
+                    <div id="confirm-appointment"><h3>Confirm</h3></div>
+                </div>
+            </div>
+        </div>
         <div id="scheduling">
+            <div id="date-heading">
+                <h1>Select A Date</h1>
+            </div>
             <div id="dates">
                 <select name="month" id="month" onChange="monthChange(event)">
                     <option value="none">-- Month --</option>
@@ -39,12 +57,18 @@
                     <option value="none">-- Day --</option>
                 </select>
                 <input id="year" type="number" value="2020" min="2020">
-                <div onClick="chooseDate" id="pick-date">
+                <div onClick="chooseDate()" id="pick-date">
                     <h3>Submit</h3>
                 </div>
+            </div>
+            <div id="time-slots">
+                <h1>Availability</h1>
+                <div id="slots"></div>
+            </div>
             </div>
         </div>
     </section>
     <footer></footer>
 </body>
+<script type="text/javascript" src="/js/scheduler.js"></script>
 </html>
