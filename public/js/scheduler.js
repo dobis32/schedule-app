@@ -1,30 +1,25 @@
-// const date = new Date(Date.now());
-// const date2 = new Date('01/03/1995');
-// console.log(date.getDate());
-// console.log(date2.getMonth());
+// TODO generateAvailability doesn't work
+// needs to talk to backend -- which is
+// is currently throwing errors
 
-// array of arrays => sub-array of objects => object = {day}
-// let appointments = {
-// 	year2020: {
-// 		JANUARY: [ { date: '5', time: '9:30AM' }, { date: '5', time: '2:00PM' }, { date: '5', time: '2:30PM' } ],
-// 		FEBRUARY: [],
-// 		MARCH: [],
-// 		APRIL: [],
-// 		MAY: [],
-// 		JUNE: [],
-// 		JULY: [],
-// 		AUGUST: [],
-// 		SEPTEMBER: [],
-// 		OCTOBER: [],
-// 		NOVEMBER: [],
-// 		DECEMBER: []
-// 	}
-// };
-let appointments = [
-	{ year: 2020, month: 'january', day: 5, time: '9:30AM' },
-	{ year: 2020, month: 'january', day: 5, time: '2:30PM' },
-	{ year: 2020, month: 'january', day: 5, time: '3:00PM' }
-];
+async function postData(url = '', data = {}) {
+	// Default options are marked with *
+	const response = await fetch(url, {
+	  method: 'POST', // *GET, POST, PUT, DELETE, etc.
+	  mode: 'cors', // no-cors, *cors, same-origin
+	  cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+	  credentials: 'same-origin', // include, *same-origin, omit
+	  headers: {
+		'Content-Type': 'application/json'
+		// 'Content-Type': 'application/x-www-form-urlencoded',
+	  },
+	  redirect: 'follow', // manual, *follow, error
+	  referrerPolicy: 'no-referrer', // no-referrer, *client
+	  body: JSON.stringify(data) // body data type must match "Content-Type" header
+	});
+	return response;
+}
+	
 
 const adjustDays = function(numberOfDays) {
 	let days = document.querySelector('#day');
@@ -74,6 +69,7 @@ const monthChange = function(event) {
 };
 
 const generateAvailability = function(month, day, year) {
+	const appointments = postData('/appointments', { month, day, year });
 	appointments.forEach((appointment) => {
 		if ((appointment.month == month.toLowerCase(), appointment.year == year, appointment.day == day)) {
 			let slot = document.querySelector(`#T${appointment.time.split(':').join('')}`);
@@ -156,3 +152,6 @@ document.querySelector('#confirm-appointment').addEventListener('click', () => {
 	const notes = document.querySelector('#appointment-notes').value;
 	console.log(appointment, notes);
 });
+
+let date = new Date(Date.now());
+generateAvailability(date.getMonth() + 1, date.getDate(), date.getFullYear());
