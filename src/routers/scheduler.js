@@ -9,31 +9,70 @@ router.get('/schedule', async (req, res) => {
 	res.render('scheduler');
 });
 
-router.get('/make', async (req, res) => {
+router.post('/appointments/make', async (req, res) => {
 	try {
-		const apt = new Appointment({
-			year: 2020,
-			month: 2,
-			day: 23,
-			notes: 'something special to note about appointment'});
-		apt.save();
-		res.send(apt);
-	} catch(error) {
+		console.log('[POST /appointments/make]', req.body);
+
+		let valid = true;
+		let { year, month, date, time, notes } = req.body;
+		if (!year) valid = false;
+		else if (!month) valid = false;
+		else if (!date) valid = false;
+		else if (!time) valid = false;
+		else if (
+			await Appointment.findOne({
+				year: parseInt(year),
+				month: parseInt(month),
+				date: parseInt(date),
+				time
+			})
+		) {
+			console.log(
+				await Appointment.find({
+					year: parseInt(year),
+					month: parseInt(month),
+					date: parseInt(date),
+					time
+				})
+			);
+			valid = false;
+		}
+
+		if (valid) {
+			const appointment = new Appointment({
+				year: parseInt(year),
+				month: parseInt(month),
+				date: parseInt(date),
+				time: time,
+				notes: notes ? notes : 'No notes.'
+			});
+			appointment.save();
+			res.send({ result: true, appointment: appointment });
+		} else {
+			res.send({ result: false });
+		}
+	} catch (error) {
 		console.log(error);
 		res.status(500).send(error);
 	}
 });
 
-router.post('/appointments', async (req, res) => {
+router.get('/appointments', async (req, res) => {
 	try {
-		console.log(req.body);
-		let body = '';
-		if((typeof req.body).toUpperCase() == 'STRING') body = JSON.parse(req.body);
-		else body = req.body;
-		const appointments = await Appointment.findAll(body);
+		console.log('[GET /appointments]', req.query);
+
+		console.log(typeof req.query.year, typeof req.query.month, typeof req.query.date);
+		let { year, month, date } = req.query;
+		const appointments = await Appointment.find({
+			year: parseInt(year),
+			month: parseInt(month),
+			date: parseInt(date)
+		});
 		console.log(appointments);
-	} catch(error) {
+		res.send({ result: true, appointments });
+	} catch (error) {
 		console.log(error);
+		res.send({ result: false });
 	}
 });
 

@@ -1,5 +1,3 @@
-console.log('hello there');
-
 const adjustDays = function(numberOfDays) {
 	let days = document.querySelector('#day');
 	while (days.firstChild) {
@@ -19,7 +17,7 @@ const adjustDays = function(numberOfDays) {
 
 const chooseDate = function(event) {
 	console.log('hello there');
-}
+};
 
 const monthChange = function(event) {
 	const month = event.target.value;
@@ -49,5 +47,6 @@ const monthChange = function(event) {
 		case 'DECEMBER':
 			adjustDays(31);
 	}
-
 };
+
+adjustDays(30);

@@ -3,7 +3,7 @@ const app = express();
 const hbs = require('hbs'); // nodemon src/app.js -e js,hbs
 const path = require('path');
 const schedulerRouter = require('./routers/scheduler');
-//require('./db/mongoose');
+require('./db/mongoose');
 
 const port = process.env.PORT || 3001;
 const publicDirectoryPath = path.join(__dirname, '../public');

@@ -6,11 +6,15 @@ const appointmentSchema = new mongoose.Schema({
 		required: true
 	},
 	month: {
-		type: String,
+		type: Number,
 		required: true
 	},
-	day: {
+	date: {
 		type: Number,
+		required: true
+	},
+	time: {
+		type: String,
 		required: true
 	},
 	notes: {
