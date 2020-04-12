@@ -1,0 +1,66 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+body {
+  background: #f1f2f6;
+  height: 100%;
+}
+
+#main-content {
+  width: 100%;
+}
+
+#main-content #login-modal {
+  margin: 30px auto 30px auto;
+  background: #fff;
+  min-width: 300px;
+  max-width: 400px;
+  min-height: 340px;
+}
+
+#main-content #login-modal #date-heading {
+  margin: auto;
+  width: 90%;
+  text-align: left;
+  padding-top: 20px;
+}
+
+#main-content #login-modal #login-credentials {
+  width: 172px;
+  margin: 0 auto;
+}
+
+#main-content #login-modal #login-credentials .credential-input {
+  margin: 1.4em 0em;
+}
+
+#main-content #login-modal #login-credentials .credential-input input {
+  margin-top: .6em;
+  width: 102%;
+}
+
+#main-content #login-modal #login-button {
+  width: 180px;
+  background-color: #1e90ff;
+  -webkit-transition: background-color .2s ease-in;
+  transition: background-color .2s ease-in;
+  margin-bottom: .4em;
+}
+
+#main-content #login-modal #login-button:hover {
+  cursor: pointer;
+  background-color: #3742fa;
+  -webkit-transition: background-color .2s ease-in;
+  transition: background-color .2s ease-in;
+}
+
+#main-content #login-modal #login-button h2 {
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  padding: .2em 0em .4em 0em;
+}
+/*# sourceMappingURL=login.css.map */

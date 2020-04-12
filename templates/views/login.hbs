@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/templates/login.css">
+    <link rel="stylesheet" type="text/css" href="/css/partials/header.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Schedule Appointments</title>
+</head>
+<body>
+    {{>header}}
+    <section id="main-content">
+        <div id="login-modal">
+            <div id="date-heading">
+                <h1>Log In</h1>
+            </div>
+            <div id="login-credentials">
+                <div class="credential-input">
+                    <h3>Username:</h3>
+                    <input type="text" name="username" id="username-input">
+                </div>
+                <div class="credential-input">
+                    <h3>Password:</h3>
+                    <input type="password" name="password" id="password-input">
+                </div>    
+                <div id="login-button" onClick="login()"><h2>Log In</h2></div>
+                <h5>Don't have an account? Sign up <a href="/signup" alt="go to sign up page">here</a>!</h5>
+            </div>
+        </div>
+    </section>
+    <footer></footer>
+</body>
+<script type="text/javascript" src="/js/helper/fetch.js"></script>
+<script type="text/javascript" src="/js/templates/login.js"></script>
+<script type="text/javascript" src="/js/partials/headerLogin.js"></script>
+</html>

@@ -4,24 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/css/scheduler.css">
+    <link rel="stylesheet" type="text/css" href="/css/templates/scheduler.css">
+    <link rel="stylesheet" type="text/css" href="/css/partials/header.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Schedule Appointments</title>
 </head>
 <body>
-    <header>
-        <div>
-            <h1>
-                Scheduling
-            </h1>
-        </div>
-    </header>
+    {{>header}}
     <section id="main-content">
-        <div id="myModal" class="modal">
-            
+        <div id="schedule-apt-modal" class="modal">
             <div class="modal-content">
                 <div id="modal-header">
-                    <span class="close">&times;</span>
+                    <span  class="close">&times;</span>
                     <h1>Confirm Appointment</h1>
                 </div>
                 <div id="modal-body">
@@ -70,5 +64,8 @@
     </section>
     <footer></footer>
 </body>
-<script type="text/javascript" src="/js/scheduler.js"></script>
+<script type="text/javascript" src="/js/helper/fetch.js"></script>
+<script type="text/javascript" src="/js/templates/scheduler.js"></script>
+<script type="text/javascript" src="/js/partials/headerLogin.js"></script>
+
 </html>

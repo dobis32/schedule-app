@@ -27,14 +27,6 @@ router.post('/appointments/make', async (req, res) => {
 				time
 			})
 		) {
-			console.log(
-				await Appointment.find({
-					year: parseInt(year),
-					month: parseInt(month),
-					date: parseInt(date),
-					time
-				})
-			);
 			valid = false;
 		}
 
@@ -46,7 +38,7 @@ router.post('/appointments/make', async (req, res) => {
 				time: time,
 				notes: notes ? notes : 'No notes.'
 			});
-			appointment.save();
+			await appointment.save();
 			res.send({ result: true, appointment: appointment });
 		} else {
 			res.send({ result: false });
@@ -61,7 +53,6 @@ router.get('/appointments', async (req, res) => {
 	try {
 		console.log('[GET /appointments]', req.query);
 
-		console.log(typeof req.query.year, typeof req.query.month, typeof req.query.date);
 		let { year, month, date } = req.query;
 		const appointments = await Appointment.find({
 			year: parseInt(year),
